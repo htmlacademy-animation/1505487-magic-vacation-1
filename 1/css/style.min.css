@@ -3227,7 +3227,9 @@ img {
   right: 0;
   margin-top: 1.5rem;
   opacity: 0;
-  pointer-events: none; }
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: 0.2s; }
   @media (min-width: 2000px) {
     .social-block__list {
       margin-top: 15px; } }
