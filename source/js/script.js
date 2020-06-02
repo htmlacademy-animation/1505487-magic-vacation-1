@@ -27,4 +27,10 @@ function init() {
   window.addEventListener(`load`, () => {
     document.body.classList.add(`page-ready`);
   }, {once: true});
+
+  const rulesScreen = document.querySelector(`.screen--rules`);
+  const lastRuleEl = rulesScreen.querySelector(`.rules__list > :last-child`);
+  lastRuleEl.addEventListener(`animationend`, () => {
+    rulesScreen.classList.add(`show-controls`);
+  });
 }
