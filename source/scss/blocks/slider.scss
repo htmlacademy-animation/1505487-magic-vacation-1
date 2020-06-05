@@ -100,8 +100,8 @@
   transform: translateX(30px);
   opacity: 0;
 
-  .swiper-slide-active &,
-  .swiper-slide-next & {
+  .active .swiper-slide-active &,
+  .active .swiper-slide-next & {
     transition-timing-function: ease-out;
     transition-duration: 0.4s;
     transition-delay: 0.4s;
@@ -171,6 +171,18 @@
   width: 4rem;
   height: 4rem;
   color: $c-dark;
+
+  .active & {
+    animation-duration: 400ms;
+    animation-delay: 400ms;
+    animation-timing-function: cubic-bezier(0.34, 1.32, 0.66, 1.22);
+    animation-name: move-right;
+    animation-fill-mode: both;
+
+    &:last-child {
+      animation-name: move-left;
+    }
+  }
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -290,5 +302,29 @@
       height: 0.4rem;
       background-color: $c-light;
     }
+  }
+}
+
+@keyframes move-right {
+  from {
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+
+  to {
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+@keyframes move-left {
+  from {
+    visibility: hidden;
+    transform: translateX(100%);
+  }
+
+  to {
+    visibility: visible;
+    transform: translateX(0);
   }
 }
