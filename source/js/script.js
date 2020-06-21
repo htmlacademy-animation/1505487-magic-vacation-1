@@ -9,6 +9,7 @@ import form from './modules/form.js';
 import social from './modules/social.js';
 import FullPageScroll from './modules/full-page-scroll';
 import {AnimationSettings, TextAniMaker} from './modules/text-ani-maker';
+import svgLoader from './modules/svg-loader';
 
 // init modules
 mobileHeight();
@@ -22,13 +23,17 @@ social();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+svgLoader(fullPageScroll.activeScreen);
 init();
 
 function init() {
+  // event listeners
   window.addEventListener(`load`, () => {
     document.body.classList.add(`page-ready`);
   }, {once: true});
 
+  // initial set up logic
   const rulesScreen = document.querySelector(`.screen--rules`);
   const lastRuleEl = rulesScreen.querySelector(`.rules__list > :last-child`);
   lastRuleEl.addEventListener(`animationend`, () => {
